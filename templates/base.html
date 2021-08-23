@@ -1,0 +1,43 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>temerature check app</title>
+</head>
+
+<body>
+<br>
+<header>
+    <h1>Honey's 体温チェックアプリ</h1>
+    </header>
+
+    <div id="wrapper"></div>
+    <nav>
+        <ul>
+            {% if g.user %}
+              <li><span>{{ g.user['username'] }}</span>
+              <li><a href="{{ url_for('logout') }}">Log Out</a>
+            {% else %}
+              <li><a href="{{ url_for('register') }}">Register</a>
+              <li><a href="{{ url_for('login') }}">Log In</a>
+            {% endif %}
+    </nav>
+    <section class="content">
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    {% block content %}{% endblock %}
+
+<footer>
+    <small>&copy; 2021 Studio Coforest.</small>
+</footer>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="main">
+    <section id="input">
+        <h2>今日の体温を選択しましょう！</h2>
+    </section>
+</div>  
+<!--日時表示-->
+{% if today%}
+    <div><b>{{ today }}</b></div>
+{% endif %}
+
+<!--参照：https://code-kitchen.dev/html/select-option/-->
+<form action="./" method="post" enctype = "multipart/form-data">
+    <select name="name">
+    <option value="">名前</option>
+    <option value="小林佳奈美">小林佳奈美</option>
+    <option value="室山いずみ">室山いずみ</option>
+    <option value="井上丈雄">井上丈雄</option>
+    </select>
+    <select name="gakunen">
+        <option value="">学年</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+    </select>
+    <select name="temp">
+    <option value="">今日の体温</option>
+    <option value="37.0℃">37.0℃</option>
+    <option value="38.0℃">38.0℃</option>
+    <option value="39.0℃">39.0℃</option>
+    </select>
+
+<input type="submit" value="送信する">
+
+</form>
+
+<!--エラー処理app.pyでは未-->
+<!-- <form action="./" method="post" enctype = "multipart/form-data">
+    <label for="name">名前：</label>
+    <input type="text" id="name" name="name" required><br>
+    <label for="gakunen">学年：</label>
+    <input type="text" id="gakunen" name="gakunen" required><br>
+    <label for="temp">今日の体温：</label>
+    <input type="text" id="temp" name="temp" required><br><br>
+    <input type="submit" value="送信する">
+</form> -->
+
+<!--ここから下は後でadminに入れる-->
+{% if results %}
+<p>{{ message_after_submit }}</p>
+<p>{{ message }}</p>
+Table from SQL
+    <table border="1" width=600>
+        <tr>
+            <th>id</th>
+            <th>名前</th>
+            <th>学年</th>
+            <th>体温</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.id }}</td>
+            <td>{{ result.name}}</td>
+            <td>{{ result.gakunen}}</td>
+            <td>{{ result.temp}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+
+{% endblock %}
