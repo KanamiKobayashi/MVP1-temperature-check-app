@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!--日時表示-->
+{% if today%}
+    <div><b>{{ today }}</b>
+    </div>
+{% endif %}
+<br>
+<a href="/">メイン画面へ戻る
+</a>
+
 {% if results %}
 
 <p>{{ message }}</p>
@@ -40,8 +49,8 @@
         {% for user in users %}
         <tr>
             <td>{{ user.id }}</td>
-            <td>{{ user.username}}</td>
-            <td>{{ user.role}}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.role }}</td>
         </tr>
         {% endfor %}
     </table>
