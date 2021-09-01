@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!--日時表示-->
+{% if today%}
+    <div><b>{{ today }}</b>
+    </div>
+{% endif %}
+
 <p>{{ message_after_submit }}</p>
 
-
-
-
+<a href="/">別日の体温も提出する
+</a>
 {% endblock %}

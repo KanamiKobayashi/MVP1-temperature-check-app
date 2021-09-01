@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if results %}
+
+<p>{{ message }}</p>
+<p>体温集計データ</p>
+    <table border="1" width=600>
+        <tr>
+            <th>id</th>
+            <th>選手名</th>
+            <th>保護者ID</th>
+            <th>入力日</th>
+            <th>体温チェック日</th>
+            <th>編集者名</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.id }}</td>
+            <td>{{ result.student_name}}</td>
+            <td>{{ result.parent_id}}</td>
+            <td>{{ result.input_date}}</td>
+            <td>{{ result.check_date}}</td>
+            <td>{{ result.modified_by}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endif %}
+
+{% if users %}
+
+<p>登録保護者氏名一覧（登録順）</p>
+    <table border="1" width=600>
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>role</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username}}</td>
+            <td>{{ user.role}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endif %}
+
+
+{% endblock %}

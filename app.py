@@ -1,9 +1,10 @@
-#app.py
-#MVP12_3_3参照
+# -*- coding: UTF-8 -*-
+
 import os
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, g, flash, session
 import pandas as pd
+import functools
 import sqlite3
 from datetime import datetime
 import db # 自作モジュール
@@ -16,7 +17,32 @@ app.config.update(dict(
     DATABASE=os.path.join(app.root_path, './db/db.sqlite3'),
     SECRET_KEY='foo-baa',
 ))
+#activekidsMVP12_3_3参照
 
+#他のviewでの認証の要求
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None:
+            return redirect(url_for('login'))
+
+        return view(**kwargs)
+
+    return wrapped_view
+
+#他のviewでのadminのみの認証の要求
+def admin_login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None:
+            return redirect(url_for('login'))
+        if g.user["role"] != "admin":
+            return redirect(url_for('main'))
+        return view(**kwargs)
+
+    return wrapped_view
+
+    
 def connect_db(): # get_db()中で使用する
     """ データベースに接続します """
     con = sqlite3.connect(app.config['DATABASE'])
@@ -32,34 +58,36 @@ def get_db():
 today = (datetime.now().strftime('%a %d %B'))
 
 @app.route("/", methods=["GET","POST"])
+@login_required
 def main():
     if request.method == "GET":
-        return render_template("index.html",#変更したい箇所auth/register.html
+        return render_template("index.html",
                                 today=today)
 
     if request.method == "POST":
 
-        name = request.form.get("name")
-        gakunen = request.form.get("gakunen")
-        temp = request.form.get("temp")
+        student_name = request.form.get("student_name")
+        temperature = request.form.get("temperature")
+        parent_id = request.form.get("parent_id")
+        input_date = request.form.get("input_date")
+        modified_by = request.form.get("modified_by") 
+        check_date = request.form.get("check_date")
 
         # SQLデータベース
         con = get_db()
-        pk = db.insert(con, name, gakunen, temp)
+        pk = db.insert(con, student_name, temperature, parent_id, input_date, modified_by, check_date)
         results = db.select_all(con)
 
         # https://blog.imind.jp/entry/2019/12/28/115641
-        df = pd.read_sql('select name, gakunen, temp from results', con=con)
+        df = pd.read_sql('select student_name, temperature, parent_id, input_date, modified_by, check_date from results', con=con)
         filepath = "./csv/" + datetime.now().strftime("%Y%m%d%H%M%S_data") + ".csv"
         df.to_csv(filepath, index=False)
-        #csvは送信を押した数だけ作成されていく、上書き更新は可能か？
        
         return render_template("submit.html",
-                                #"index.html", 
-                                #results=results,
-                                #message="データを追加しました",
-                                message_after_submit="ご連絡ありがとうございました")
-                                #today=today)
+                                results=results,
+                                message_after_submit="ご連絡ありがとうございました",
+                                today=today)
+
 
 # 終了したとき db 接続を close する
 @app.teardown_appcontext
@@ -83,7 +111,7 @@ def register():
         elif db.execute(
             'SELECT id FROM user WHERE username = ?', (username,)
         ).fetchone() is not None:
-            error = f"User {username} is already registered."
+            error = "User {username} is already registered."
 
         print(error)
         if error is None: # ユーザ名とパスワードが入力され、既存ユーザ出ない場合、下記でユーザをデータベースにinsert(登録)
@@ -144,22 +172,24 @@ def logout():
     session.clear()
     return redirect(url_for('main'))
 
-#他のviewでの認証の要求
-def login_required(view):
-    @functools.wraps(view)
-    def wrapped_view(**kwargs):
-        if g.user is None:
-            return redirect(url_for('login'))
-
-        return view(**kwargs)
-
-    return wrapped_view
-
 
 ###
 
+#新しくアドミンのページ作成
+@app.route("/admin", methods=["GET","POST"])
+@admin_login_required
+def admin_page():
+    if request.method =="GET":
+        # SQLデータベース
+        con = get_db()
+        results = db.select_all(con)
+        users = db.select_all_users(con)
+        return render_template("admin/admin.html",
+                                results=results,
+                                users=users)
 
+    # if request.method =="POST":
 
 
 if __name__ == '__main__':
-    app.run(debug=True,  host='0.0.0.0', port=1005) # ポートの変更
+    app.run(debug=True,  host='0.0.0.0', port=1011) # ポートの変更

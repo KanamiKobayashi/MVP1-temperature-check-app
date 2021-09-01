@@ -10,8 +10,11 @@ CREATE TABLE user (
 
 CREATE TABLE results (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL,
-  gakunen INTEGER,
-  temp TEXT NOT NULL,
+  student_name TEXT NOT NULL,
+  temperature TEXT NOT NULL,
+  parent_id INTEGER NOT NULL,
+  input_date DATETIME NOT NULL,
+  modified_by TEXT NOT NULL,
+  check_date TEXT NOT NULL,
   created DATETIME DEFAULT CURRENT_TIMESTAMP
 );

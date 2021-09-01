@@ -16,6 +16,7 @@
 <br>
 <header>
     <h1>Honey's 体温チェックアプリ</h1>
+    <img src="/img/honeys_logo.jpg" alt="honeys_logo" width="50" height="50" />
     </header>
 
     <div id="wrapper"></div>
@@ -24,6 +25,9 @@
             {% if g.user %}
               <li><span>{{ g.user['username'] }}</span>
               <li><a href="{{ url_for('logout') }}">Log Out</a>
+            {% if g.user['role'] == "admin" %}
+                <li><a href="{{ url_for('admin_page') }}">Admin</a>
+            {% endif %}
             {% else %}
               <li><a href="{{ url_for('register') }}">Register</a>
               <li><a href="{{ url_for('login') }}">Log In</a>

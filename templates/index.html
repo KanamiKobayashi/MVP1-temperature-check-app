@@ -13,28 +13,138 @@
 
 <!--参照：https://code-kitchen.dev/html/select-option/-->
 <form action="./" method="post" enctype = "multipart/form-data">
-    <select name="name">
-    <option value="">名前</option>
+    <label for="input_date">今日の日付<br>（右のカレンダーから選択できます）</label>
+    <input type="date" name="input_date" id="input_date" required>
+    <label for="check_date">体温を記録したい日付を選択<br>（右のカレンダーから選択できます）</label>
+    <input type="date" name="check_date" id="check_date" required>
+    <select name="modified_by">
+        <option value="">提出者名</option>
+        <option value="小林繁治">小林繁治</option>
+        <option value="尾久土三枝子">尾久土三枝子</option>
+        <option value="井上郡司">井上郡司</option>
+        <option value="小林則夫">小林則夫</option>
+        <option value="春名昌美">春名昌美</option>
+    </select>
+    <select name="parent_id">
+        <option value="">提出者ID</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="2">3</option>
+        <option value="2">4</option>
+        <option value="2">5</option>
+    </select>
+    <select name="student_name">
+    <option value="">選手名その1</option>
     <option value="小林佳奈美">小林佳奈美</option>
     <option value="室山いずみ">室山いずみ</option>
     <option value="井上丈雄">井上丈雄</option>
+    <option value="小林祐太">小林祐太</option>
+    <option value="春名麻衣">春名麻衣</option>
     </select>
-    <select name="gakunen">
-        <option value="">学年</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-    </select>
-    <select name="temp">
+    <select name="temperature">
     <option value="">今日の体温</option>
-    <option value="37.0℃">37.0℃</option>
-    <option value="38.0℃">38.0℃</option>
+    <!-- 体温変更必要 -->
+    <option value="36.0℃">36.0℃</option>
+    <option value="36.1℃">36.1℃</option>
+    <option value="39.0℃">36.2℃</option>
+    <option value="39.0℃">36.3℃</option>
+    <option value="39.0℃">36.4℃</option>
+    <option value="39.0℃">36.5℃</option>
+    <option value="39.0℃">36.6℃</option>
+    <option value="39.0℃">36.7℃</option>
+    <option value="39.0℃">36.8℃</option>
+    <option value="39.0℃">36.9℃</option>
+    <option value="39.0℃">37.0℃</option>
+    <option value="39.0℃">37.1℃</option>
+    <option value="39.0℃">37.2℃</option>
+    <option value="39.0℃">37.3℃</option>
+    <option value="39.0℃">37.4℃</option>
+    <option value="39.0℃">37.5℃</option>
+    <option value="39.0℃">37.6℃</option>
+    <option value="39.0℃">37.7℃</option>
+    <option value="39.0℃">37.8℃</option>
+    <option value="39.0℃">37.8℃</option>
+    <option value="39.0℃">37.8℃</option>
+    <option value="39.0℃">38.0℃</option>
     <option value="39.0℃">39.0℃</option>
+    <option value="39.0℃">39.0℃以上</option>
     </select>
-
+    <!-- <select name="student_name">
+        <option value="">選手名その2</option>
+        <option value="小林佳奈美">小林佳奈美</option>
+        <option value="室山いずみ">室山いずみ</option>
+        <option value="井上丈雄">井上丈雄</option>
+        <option value="小林祐太">小林祐太</option>
+        <option value="春名麻衣">春名麻衣</option>
+        </select>
+        <select name="temperature">
+        <option value="">今日の体温</option>
+        体温変更必要
+        <option value="36.0℃">36.0℃</option>
+        <option value="36.1℃">36.1℃</option>
+        <option value="39.0℃">36.2℃</option>
+        <option value="39.0℃">36.3℃</option>
+        <option value="39.0℃">36.4℃</option>
+        <option value="39.0℃">36.5℃</option>
+        <option value="39.0℃">36.6℃</option>
+        <option value="39.0℃">36.7℃</option>
+        <option value="39.0℃">36.8℃</option>
+        <option value="39.0℃">36.9℃</option>
+        <option value="39.0℃">37.0℃</option>
+        <option value="39.0℃">37.1℃</option>
+        <option value="39.0℃">37.2℃</option>
+        <option value="39.0℃">37.3℃</option>
+        <option value="39.0℃">37.4℃</option>
+        <option value="39.0℃">37.5℃</option>
+        <option value="39.0℃">37.6℃</option>
+        <option value="39.0℃">37.7℃</option>
+        <option value="39.0℃">37.8℃</option>
+        <option value="39.0℃">37.8℃</option>
+        <option value="39.0℃">37.8℃</option>
+        <option value="39.0℃">38.0℃</option>
+        <option value="39.0℃">39.0℃</option>
+        <option value="39.0℃">39.0℃以上</option>
+        </select>    
+        <select name="student_name">
+            <option value="">選手名その3</option>
+            <option value="小林佳奈美">小林佳奈美</option>
+            <option value="室山いずみ">室山いずみ</option>
+            <option value="井上丈雄">井上丈雄</option>
+            <option value="小林祐太">小林祐太</option>
+            <option value="春名麻衣">春名麻衣</option>
+            </select>
+            <select name="temperature">
+            <option value="">今日の体温</option>
+            体温変更必要
+            <option value="36.0℃">36.0℃</option>
+            <option value="36.1℃">36.1℃</option>
+            <option value="39.0℃">36.2℃</option>
+            <option value="39.0℃">36.3℃</option>
+            <option value="39.0℃">36.4℃</option>
+            <option value="39.0℃">36.5℃</option>
+            <option value="39.0℃">36.6℃</option>
+            <option value="39.0℃">36.7℃</option>
+            <option value="39.0℃">36.8℃</option>
+            <option value="39.0℃">36.9℃</option>
+            <option value="39.0℃">37.0℃</option>
+            <option value="39.0℃">37.1℃</option>
+            <option value="39.0℃">37.2℃</option>
+            <option value="39.0℃">37.3℃</option>
+            <option value="39.0℃">37.4℃</option>
+            <option value="39.0℃">37.5℃</option>
+            <option value="39.0℃">37.6℃</option>
+            <option value="39.0℃">37.7℃</option>
+            <option value="39.0℃">37.8℃</option>
+            <option value="39.0℃">37.8℃</option>
+            <option value="39.0℃">37.8℃</option>
+            <option value="39.0℃">38.0℃</option>
+            <option value="39.0℃">39.0℃</option>
+            <option value="39.0℃">39.0℃以上</option>
+            </select>  -->
 <input type="submit" value="送信する">
-
 </form>
+
+<!-- 参照：https://code-kitchen.dev/html/input-date/#input-type%3D%22date%22%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9 -->
 
 <!--エラー処理app.pyでは未-->
 <!-- <form action="./" method="post" enctype = "multipart/form-data">
@@ -46,29 +156,5 @@
     <input type="text" id="temp" name="temp" required><br><br>
     <input type="submit" value="送信する">
 </form> -->
-
-<!--ここから下は後でadminに入れる-->
-{% if results %}
-<p>{{ message_after_submit }}</p>
-<p>{{ message }}</p>
-Table from SQL
-    <table border="1" width=600>
-        <tr>
-            <th>id</th>
-            <th>名前</th>
-            <th>学年</th>
-            <th>体温</th>
-        </tr>
-        {% for result in results %}
-        <tr>
-            <td>{{ result.id }}</td>
-            <td>{{ result.name}}</td>
-            <td>{{ result.gakunen}}</td>
-            <td>{{ result.temp}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-{% endif %}
-
 
 {% endblock %}
