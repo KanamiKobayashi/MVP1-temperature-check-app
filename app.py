@@ -79,9 +79,9 @@ def main():
         results = db.select_all(con)
 
         # https://blog.imind.jp/entry/2019/12/28/115641
-        df = pd.read_sql('select student_name, temperature, parent_id, input_date, modified_by, check_date from results', con=con)
-        filepath = "./csv/" + datetime.now().strftime("%Y%m%d%H%M%S_data") + ".csv"
-        df.to_csv(filepath, index=False)
+        # df = pd.read_sql('select student_name, temperature, parent_id, input_date, modified_by, check_date from results', con=con)
+        # filepath = "./csv/" + datetime.now().strftime("%Y%m%d%H%M%S_data") + ".csv"
+        # df.to_csv(filepath, index=False)
        
         return render_template("submit.html",
                                 results=results,
@@ -186,10 +186,11 @@ def admin_page():
         users = db.select_all_users(con)
         return render_template("admin/admin.html",
                                 results=results,
-                                users=users)
+                                users=users,
+                                today=today)
 
     # if request.method =="POST":
 
 
 if __name__ == '__main__':
-    app.run(debug=True,  host='0.0.0.0', port=1011) # ポートの変更
+    app.run(debug=True,  host='0.0.0.0', port=1012) # ポートの変更
