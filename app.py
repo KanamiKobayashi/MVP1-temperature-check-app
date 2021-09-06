@@ -187,7 +187,8 @@ def admin_page():
         return render_template("admin/admin.html",
                                 results=results,
                                 users=users,
-                                today=today)
+                                today=today,
+                                admin_page=True)
 
     # if request.method =="POST":
 

@@ -15,23 +15,27 @@
 <body>
 <br>
 <header>
-    <h2>Honey's 体温チェックアプリ</h2>
-    <img src="/img/honeys_logo.jpg" alt="honeys_logo" width="50" height="50" />
+    <img class="float-left" src="/static/img/honeys_logo.png" alt="honeys_logo" width="100" height="100" />
+    <h2 class="float-left">Honey's 体温チェック</h2>
 </header>
-    <div id="wrapper"></div>
+    <div id="wrapper">
         <nav>
             <ul>
                 {% if g.user %}
                 <li><span>{{ g.user['username'] }}</span>
                 <li><a href="{{ url_for('logout') }}">Log Out</a>
-                {% if g.user['role'] == "admin" %}
+                {% if g.user['role'] == "admin" and not admin_page %}
                     <li><a href="{{ url_for('admin_page') }}">Admin</a>
+                {% endif %}
+                {% if g.user['role'] == "admin" and admin_page %}
+                    <li><a href="{{ url_for('main') }}">Home</a>
                 {% endif %}
                 {% else %}
                 <li><a href="{{ url_for('register') }}">Register</a>
                 <li><a href="{{ url_for('login') }}">Log In</a>
                 {% endif %}
         </nav>
+    </div>
     <section class="content">
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
