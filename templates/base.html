@@ -2,49 +2,56 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <link rel="stylesheet" href="/static/style.css">
-    <title>temerature check app</title>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <link rel="stylesheet" href="/static/style.css">
+        <title>temerature check app</title>
+    </head>
 
-<body>
-<br>
-<header>
-    <img class="float-left" src="/static/img/honeys_logo.png" alt="honeys_logo" width="100" height="100" />
-    <h2 class="float-left">Honey's 体温チェック</h2>
-</header>
-    <div id="wrapper">
-        <nav>
-            <ul>
-                {% if g.user %}
-                <li><span>{{ g.user['username'] }}</span>
-                <li><a href="{{ url_for('logout') }}">Log Out</a>
-                {% if g.user['role'] == "admin" and not admin_page %}
-                    <li><a href="{{ url_for('admin_page') }}">Admin</a>
-                {% endif %}
-                {% if g.user['role'] == "admin" and admin_page %}
-                    <li><a href="{{ url_for('main') }}">Home</a>
-                {% endif %}
-                {% else %}
-                <li><a href="{{ url_for('register') }}">Register</a>
-                <li><a href="{{ url_for('login') }}">Log In</a>
-                {% endif %}
-        </nav>
-    </div>
-    <section class="content">
-    {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-    {% endfor %}
+    <body>
+        <header>
+            <br>
+            <a href="{{ url_for('main') }}"><img class="float-left" src="/static/img/honeys_logo.png" alt="honeys_logo" width="100" height="100" />
+            </a>
+            <h2 class="float-left">Honey's 体温チェック</h2>
+        </header>
+            <div id="wrapper">
+                <nav>
+                    <ul>
+                        {% if g.user %}
+                        <li><span>{{ g.user['username'] }}</span>
+                        <li><a href="{{ url_for('logout') }}">Log Out</a>
+                        {% if g.user['role'] == "admin" and not admin_page %}
+                            <li><a href="{{ url_for('admin_page') }}">Admin</a>
+                        {% endif %}
+                        {% if g.user['role'] == "admin" and admin_page %}
+                            <li><a href="{{ url_for('main') }}">Home</a>
+                        {% endif %}
+                        {% else %}
+                        <li><a href="{{ url_for('register') }}">Register</a>
+                        <li><a href="{{ url_for('login') }}">Log In</a>
+                        {% endif %}
+                </nav>
+            </div>
+            <section class="content">
+            {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+            {% endfor %}
+            <!--日時表示-->
+            {% if today%}
+            <div><b>{{ today }}</b>
+            </div>
+            {% endif %}
+            <br>
 
-    {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
 
-<footer>
-    <small>&copy; 2021 Studio Coforest.</small>
-</footer>
-</body>
+            <footer>
+                <small>&copy; 2021 Studio Coforest.</small>
+            </footer>
+    </body>
 </html>

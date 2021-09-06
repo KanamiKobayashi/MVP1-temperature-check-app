@@ -1,10 +1,10 @@
-html { font-family: sans-serif; background: #eee; padding: 1rem; }
+html { background: #eee; padding: 1rem; }
 body { text-align: center; max-width: 960px; margin: 0 auto; background: white; }
-h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
-h2 { font-family: serif; color: #377ba8; margin: 1rem 0; }
+h1 { color: #377ba8; margin: 1rem 0; }
+h2 { color: #377ba8; margin: 1rem 0; }
+h3 { color:#cc2f2e; }
 a { color: #377ba8; }
-hr { border: none; border-top: 1px solid lightgray; }
-nav { background: lightgray; display: flex; align-items: center; padding: 0 0.5rem; }
+nav { background: rgb(250, 199, 207); display: flex; align-items: center; padding: 0 0.5rem; flex-direction: row-reverse;}
 nav h1 { flex: auto; margin: 0; }
 nav h1 a { text-decoration: none; padding: 0.25rem 0.5rem; }
 nav ul  { display: flex; list-style: none; margin: 0; padding: 0; }
@@ -24,4 +24,40 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content input, .content textarea { margin-bottom: 1em; }
 .content textarea { min-height: 12em; resize: vertical; }
 input.danger { color: #cc2f2e; }
-input[type=submit] { align-self: start; min-width: 10em; }
+input[type=submit] { align-self: center; min-width: 10em; }
+
+table, th, td { 
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table {
+    width: 100%;
+}
+.bolded {
+    font-weight: 700;
+}
+.float-left {
+    float: left;
+}
+header {
+    padding: 0 5%;
+}
+#wrapper {
+    clear: both;
+}
+header h2 {
+    padding-top: 15px;
+}
+.input_width {
+    width:33%;
+    text-align: center;
+    align-self: center;
+}
+.input_width_main {
+    width: 15em;
+    text-align: center;
+    align-self: center;
+}
+select {
+    margin-top: 1em;
+}
