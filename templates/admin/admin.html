@@ -1,15 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!--日時表示-->
-{% if today%}
-    <div><b>{{ today }}</b>
-    </div>
-{% endif %}
-<br>
-<a href="/">メイン画面へ戻る
-</a>
-
 {% if results %}
 
 <p class="bolded" >体温集計データ</p>
@@ -38,7 +29,7 @@
 
 {% if users %}
 
-<p class="bolded" >登録保護者氏名一覧（登録順）</p>
+<p class="bolded" >アプリ登録保護者氏名一覧（登録順）</p>
     <table>
         <tr>
             <th>id</th>

@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!--日時表示-->
-{% if today%}
-    <div><b>{{ today }}</b></div>
-{% endif %}
-
 <div id="main">
     <section id="input">
         <h3>今日の体温を提出しましょう！</h3>
@@ -16,8 +11,8 @@
 <form action="./" method="post" enctype = "multipart/form-data">
     <label for="input_date">今日の日付<br>（右のカレンダーから選択できます）</label>
     <input type="date" name="input_date" id="input_date" required>
-    <label for="check_date">体温を記録したい日付を選択<br>（右のカレンダーから選択できます）</label>
-    <input type="date" name="check_date" id="check_date" required>
+    <label for="check_date">体温を記録したい日付<br>（右のカレンダーから選択できます）</label>
+    <input type="datetime-local" name="check_date" id="check_date" required>
     <select name="modified_by" required>
         <option value="">提出者名</option>
         <option value="小林繁治">小林繁治</option>
