@@ -2,87 +2,48 @@
 {% block content %}
 
 <div id="main">
-    <section id="input">
-        <h3>今日の体温を提出しましょう！</h3>
-    </section>
-</div>  
-
-<!--参照：https://code-kitchen.dev/html/select-option/-->
+  <section id="input">
+    <h3>今日の体温を提出しましょう！</h3>
+  </section>
+</div>
 <div>
-    <form action="./" method="post" enctype = "multipart/form-data">
+  <form action="./" method="post" enctype="multipart/form-data">
     <label for="input_date">今日の日付<br>（右のカレンダーから選択できます）</label>
-    <input type="date" name="input_date" id="input_date" required class="input_width_main">
+    <input type="date" name="input_date" id="input_date" required class="input-width-main">
     <label for="check_date">体温を記録したい日付<br>（右のカレンダーから選択できます）</label>
-    <input type="datetime-local" name="check_date" id="check_date" required class="input_width_main">
-    <select name="modified_by" required class="input_width_main">
-        <option value="">提出者名</option>
-        <option value="小林繁治">小林繁治</option>
-        <option value="尾久土三枝子">尾久土三枝子</option>
-        <option value="井上郡司">井上郡司</option>
-        <option value="小林則夫">小林則夫</option>
-        <option value="春名昌美">春名昌美</option>
+    <input type="datetime-local" name="check_date" id="check_date" required class="input-width-main">
+    <select name="modified_by" required class="input-width-main">
+      <option value="">提出者名</option>
+      <option value="小林繁治">小林繁治</option>
+      <option value="尾久土三枝子">尾久土三枝子</option>
+      <option value="井上郡司">井上郡司</option>
+      <option value="小林則夫">小林則夫</option>
+      <option value="春名昌美">春名昌美</option>
     </select>
-    <select name="parent_id" required class="input_width_main">
-        <option value="">提出者ID</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+    <select name="parent_id" required class="input-width-main">
+      <option value="">提出者ID</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
     </select>
-    <select name="student_name" required class="input_width_main">
-        <option value="">選手名その1</option>
-        <option value="小林佳奈美">小林佳奈美</option>
-        <option value="室山いずみ">室山いずみ</option>
-        <option value="井上丈雄">井上丈雄</option>
-        <option value="小林祐太">小林祐太</option>
-        <option value="春名麻衣">春名麻衣</option>
+    <select name="student_name" required class="input-width-main">
+      <option value="">選手名その1</option>
+      <option value="小林佳奈美">小林佳奈美</option>
+      <option value="室山いずみ">室山いずみ</option>
+      <option value="井上丈雄">井上丈雄</option>
+      <option value="小林祐太">小林祐太</option>
+      <option value="春名麻衣">春名麻衣</option>
     </select>
-    <select name="temperature" required class="input_width_main">
-        <option value="">今日の体温</option>
-        <option value="35.5℃以下">35.5℃以下</option>
-        <option value="35.6℃">35.6℃</option>
-        <option value="35.7℃">35.7℃</option>
-        <option value="35.8℃">35.8℃</option>
-        <option value="35.9℃">35.9℃</option>
-        <option value="36.0℃">36.0℃</option>
-        <option value="36.0℃">36.0℃</option>
-        <option value="36.1℃">36.1℃</option>
-        <option value="36.2℃">36.2℃</option>
-        <option value="36.3℃">36.3℃</option>
-        <option value="36.4℃">36.4℃</option>
-        <option value="36.5℃">36.5℃</option>
-        <option value="36.6℃">36.6℃</option>
-        <option value="36.7℃">36.7℃</option>
-        <option value="36.8℃">36.8℃</option>
-        <option value="36.9℃">36.9℃</option>
-        <option value="37.0℃">37.0℃</option>
-        <option value="37.1℃">37.1℃</option>
-        <option value="37.2℃">37.2℃</option>
-        <option value="37.3℃">37.3℃</option>
-        <option value="37.4℃">37.4℃</option>
-        <option value="37.5℃">37.5℃</option>
-        <option value="37.6℃">37.6℃</option>
-        <option value="37.7℃">37.7℃</option>
-        <option value="37.8℃">37.8℃</option>
-        <option value="37.9℃">37.9℃</option>
-        <option value="38.0℃">38.0℃</option>
-        <option value="38.1℃">38.1℃</option>
-        <option value="38.2℃">38.2℃</option>
-        <option value="38.3℃">38.3℃</option>
-        <option value="38.4℃">38.4℃</option>
-        <option value="38.5℃">38.5℃</option>
-        <option value="38.6℃">38.6℃</option>
-        <option value="38.7℃">38.7℃</option>
-        <option value="38.8℃">38.8℃</option>
-        <option value="38.9℃">38.9℃</option>
-        <option value="39.0℃以上">39.0℃以上</option>
+    <select name="temperature" required class="input-width-main">
+      <option value="">今日の体温</option>
+      {% for k in range(45) %}
+        <option value="{{35.5+k/10}}">{{35.5+k/10}}</option>
+      {% endfor %}
     </select>
     <br>
     <input type="submit" value="送信する">
-    </form>
+  </form>
 </div>
-
-<!-- 参照：https://code-kitchen.dev/html/input-date/#input-type%3D%22date%22%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9 -->
-
 {% endblock %}
