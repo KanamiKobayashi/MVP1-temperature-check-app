@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS results;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE NOT NULL,
+  username TEXT NOT NULL,
   password TEXT NOT NULL,
   role TEXT NOT NULL DEFAULT 'user'
 );
@@ -17,4 +17,4 @@ CREATE TABLE results (
   modified_by TEXT NOT NULL,
   check_date TEXT NOT NULL,
   created DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+)
