@@ -41,8 +41,7 @@ def admin_login_required(view):
         return view(**kwargs)
 
     return wrapped_view
-
-    
+ 
 def connect_db(): # get_db()中で使用する
     """ データベースに接続します """
     con = sqlite3.connect(app.config['DATABASE'])
@@ -114,7 +113,7 @@ def register():
             error = "User {username} is already registered."
 
         print(error)
-        if error is None: # ユーザ名とパスワードが入力され、既存ユーザ出ない場合、下記でユーザをデータベースにinsert(登録)
+        if error is None:
             db.execute(
                 'INSERT INTO user (username, password) VALUES (?, ?)',
                 (username, generate_password_hash(password)) 
