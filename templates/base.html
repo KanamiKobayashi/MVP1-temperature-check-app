@@ -22,16 +22,16 @@
       <ul>
         {% if g.user %}
         <li><span>{{ g.user['username'] }}</span></li>
-        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        <li><a href="{{ url_for('logout') }}">ログアウト</a></li>
           {% if g.user['role'] == "admin" and not admin_page %}
-        <li><a href="{{ url_for('admin_page') }}">Admin</a></li>
+        <li><a href="{{ url_for('admin_page') }}">管理者画面</a></li>
           {% endif %}
           {% if g.user['role'] == "admin" and admin_page %}
-        <li><a href="{{ url_for('main') }}">Home</a></li>
+        <li><a href="{{ url_for('main') }}">ホーム</a></li>
           {% endif %}
           {% else %}
-        <li><a href="{{ url_for('register') }}">Register</a></li>
-        <li><a href="{{ url_for('login') }}">Log In</a></li>
+        <li><a href="{{ url_for('register') }}">アカウント登録</a></li>
+        <li><a href="{{ url_for('login') }}">ログイン</a></li>
           {% endif %}
         </ul>
     </nav>
@@ -40,7 +40,7 @@
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
     {% endfor %}
-    <!--日時表示-->
+    
     {% if today%}
       <p><b>{{ today }}</b></p>
     {% endif %}
