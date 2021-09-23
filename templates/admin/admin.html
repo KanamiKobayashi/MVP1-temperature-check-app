@@ -11,16 +11,18 @@
             <th>保護者ID</th>
             <th>入力日</th>
             <th>体温チェック日</th>
-            <th>編集者名</th>
+            <th>提出者名</th>
+            <th>提出日</th>
         </tr>
         {% for result in results %}
         <tr>
             <td>{{ result.id }}</td>
-            <td>{{ result.student_name}}</td>
-            <td>{{ result.parent_id}}</td>
-            <td>{{ result.input_date}}</td>
-            <td>{{ result.check_date}}</td>
-            <td>{{ result.modified_by}}</td>
+            <td>{{ result.student_name }}</td>
+            <td>{{ result.parent_id }}</td>
+            <td>{{ result.input_date }}</td>
+            <td>{{ result.check_date }}</td>
+            <td>{{ result.modified_by }}</td>
+            <td>{{ result.created }}</td>
         </tr>
         {% endfor %}
     </table>
