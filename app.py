@@ -1,5 +1,3 @@
-# -*- coding: UTF-8 -*-
-
 import os
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, g, flash, session
@@ -87,7 +85,6 @@ def main():
                                 message_after_submit="ご連絡ありがとうございました",
                                 today=today)
 
-
 # 終了したとき db 接続を close する
 @app.teardown_appcontext
 def close_db(error):
@@ -97,7 +94,7 @@ def close_db(error):
 #登録registerの部分
 @app.route('/register', methods=('GET', 'POST'))
 def register():
-    if request.method == 'POST':#入力データの検証を開始
+    if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         db = get_db()
@@ -119,12 +116,12 @@ def register():
                 (username, generate_password_hash(password)) 
             )
             db.commit()
-            return redirect(url_for('login'))#そのあとログイン画面へ('！！！ここにはhtmlの名前ではなく、routeのdefの名前を書く')
+            return redirect(url_for('login'))#ログイン画面へ(ここにはhtmlの名前ではなく、routeのdefの名前を記載)
             print("Register success.")
 
         flash(error)
 
-    return render_template('auth/register.html') #ユーザが最初にページを訪れた場合 or エラーで再度画面を表示する場合
+    return render_template('auth/register.html')
 
 #ログイン
 @app.route('/login', methods=('GET', 'POST'))
@@ -171,15 +168,11 @@ def logout():
     session.clear()
     return redirect(url_for('main'))
 
-
-###
-
 #新しくアドミンのページ作成
 @app.route("/admin", methods=["GET","POST"])
 @admin_login_required
 def admin_page():
     if request.method =="GET":
-        # SQLデータベース
         con = get_db()
         results = db.select_all(con)
         users = db.select_all_users(con)
@@ -188,9 +181,6 @@ def admin_page():
                                 users=users,
                                 today=today,
                                 admin_page=True)
-
-    # if request.method =="POST":
-
 
 if __name__ == '__main__':
     app.run(debug=True,  host='0.0.0.0', port=1014) # ポートの変更
