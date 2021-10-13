@@ -8,6 +8,8 @@ This app users are the parents of players and the coaches working for Japanese c
 
 This is MVP_1 version.
 
-demo:
+demo(English):
+https://temperaturecheckapp3.herokuapp.com/
 
-https://activekids365.herokuapp.com/
+demo(Japanese):
+https://temperaturecheckapp2.herokuapp.com/
