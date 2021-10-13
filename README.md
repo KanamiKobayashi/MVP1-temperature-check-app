@@ -8,6 +8,6 @@ This app users are the parents of players and the coaches working for Japanese c
 
 This is MVP_1 version.
 
-Here is a demo.
+demo:
 
 https://activekids365.herokuapp.com/
