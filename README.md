@@ -1,9 +1,9 @@
 # MVP_1
-This health check app is for my friend's kids cheerleading team in Japan to filling in COVID forms.
+This health check app is for kids cheerleading team in Japan filling in COVID forms.
 
-Due to COVID situation, they must check all players temperatures for 2 weeks before attending the competition. 
-I am creating this app to allow them to save significant amount of time to record their health instead of manual way and focus on practicinge their performance.
+Due to COVID situation, they must check in all players' temperature for 2 weeks before attending the competition. 
+I am developing this app to allow them save time (instead of manual recording way) and focus on practice their performance.
 
-This app users are the parents of players and the coaches.
+This app users are the parents of players and the coaches working for Japanese cheerleading association.
 
-This is MVP_1.
+This is MVP_1 version.
