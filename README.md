@@ -7,3 +7,7 @@ I am developing this app to allow them save time (instead of manual recording wa
 This app users are the parents of players and the coaches working for Japanese cheerleading association.
 
 This is MVP_1 version.
+
+Here is a demo.
+
+https://activekids365.herokuapp.com/
