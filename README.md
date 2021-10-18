@@ -1,4 +1,4 @@
-# MVP_1
+# MVP_2
 This health check app is for kids cheerleading team in Japan filling in COVID forms.
 
 Due to COVID situation, they must check in all players' temperature for 2 weeks before attending the competition. 
