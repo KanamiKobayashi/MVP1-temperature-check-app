@@ -12,7 +12,7 @@ Main goals
 2. Use registered database info to show user's name and information on the admin table
 3. Automation from database into excel(csv) form which is provided by association.
 
-app demos:
+App demos:
 First you will be logged in as "Izumi" and this is the only admin who is able to visit admin page. (pass:3333)
 Once you logged out and register yourself, then try to log in. You will be a new user and be able to view only submit page.
 
